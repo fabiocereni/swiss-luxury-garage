@@ -6,7 +6,13 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar"; 
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const cinzel = Cinzel({ subsets: ["latin"], variable: "--font-cinzel", weight: ["400", "500", "600", "700", "800", "900"], display: "swap", adjustFontFallback: false });
+const cinzel = Cinzel({ 
+  subsets: ["latin"], 
+  variable: "--font-cinzel",
+  weight: ["400", "700", "900"], // Aggiungi pesi specifici
+  display: 'swap',
+  adjustFontFallback: false, 
+});
 
 export const metadata = {
   title: 'Swiss Luxury Garage', // Definisce il testo pulito che vedi nella scheda
@@ -25,8 +31,8 @@ export default function RootLayout({
   return (
     <html lang="it">
       {/* Aggiungiamo subpixel-antialiased per rendere il font sottile e nitido come in locale */}
-      <body className={`${inter.variable} ${cinzel.variable} font-sans bg-swiss-black antialiased subpixel-antialiased`}>
-        <Navbar />
+      <body className={`${inter.variable} ${cinzel.variable} font-sans bg-swiss-black antialiased`}>
+          <Navbar />
         <SmoothScroll>
           {children}
         </SmoothScroll>

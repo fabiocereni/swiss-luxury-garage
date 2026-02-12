@@ -11,8 +11,8 @@ const config: Config = {
         'swiss-red': '#D80000', 
       },
       fontFamily: {
-        sans: ['var(--font-inter)'],
-        display: ['var(--font-cinzel)'],
+        sans: ['Inter', 'sans-serif'],
+        display: ['Cinzel', 'serif'],
       },
       animation: {
         marquee: 'marquee 25s linear infinite',
