@@ -3,14 +3,60 @@
 @tailwind utilities;
 
 @layer base {
-  h1, .font-display {
-    /* Se la variabile non viene caricata, forziamo il font Cinzel con fallback Georgia */
+  /* 1. RESET DIMENSIONI E SCALA */
+  html {
+    /* Impedisce a Safari di ridimensionare il testo arbitrariamente */
+    -webkit-text-size-adjust: 100%;
+    /* Definisce una base solida per le misure in rem */
+    font-size: 16px; 
+    background-color: #050505;
+  }
+
+  body {
+    /* Usa il tuo colore swiss-black definito nel config */
+    @apply bg-swiss-black text-white antialiased;
+    
+    /* Forza la nitidezza dei font (fondamentale per lo stile lusso) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* Evita scroll orizzontali indesiderati */
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 2. GESTIONE FONT DISPLAY (CINZEL) */
+  h1, h2, h3, h4, .font-display {
+    /* Utilizziamo Georgia come fallback perché ha una larghezza dei caratteri 
+       molto più simile a Cinzel rispetto al Times New Roman di default.
+       Questo evita l'effetto "zoom" se il font tarda a caricarsi.
+    */
     font-family: var(--font-cinzel), Georgia, serif !important;
+    
+    /* Riduce leggermente lo spazio tra le lettere per un look più compatto */
+    letter-spacing: -0.02em; 
+    
+    /* Assicura che il testo non sia troppo "grasso" in produzione */
+    font-weight: 400; 
+  }
+
+  /* 3. MIGLIORAMENTO LEGGIBILITÀ TESTO SANS (INTER) */
+  p, span, .font-sans {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.6;
   }
 }
 
-body {
-  background-color: #050505; 
-  color: #E5E5E5;
-  overflow-x: hidden;
+/* 4. UTILITIES PERSONALIZZATE */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Effetto vetro lussuoso per navbar/card */
+  .glass-effect {
+    @apply bg-black/80 backdrop-blur-xl border-white/10;
+  }
 }

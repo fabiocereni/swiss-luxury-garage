@@ -9,8 +9,10 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const cinzel = Cinzel({ 
   subsets: ["latin"], 
   variable: "--font-cinzel",
-  weight: ["400", "700", "900"], // Aggiungi questi pesi esplicitamente
+  weight: ["400", "700", "900"], // Devi mettere i pesi espliciti
   display: 'swap',
+  preload: true,
+  adjustFontFallback: false, // Impedisce al font di emergenza di "espandersi"
 });
 
 export const metadata = {
