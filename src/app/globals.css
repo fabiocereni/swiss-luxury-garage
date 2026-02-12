@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Colore di base per tutto il sito */
+@layer base {
+  h1, .font-display {
+    /* Se la variabile non viene caricata, forziamo il font Cinzel con fallback Georgia */
+    font-family: var(--font-cinzel), Georgia, serif !important;
+  }
+}
+
 body {
   background-color: #050505; 
   color: #E5E5E5;
